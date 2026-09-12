@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>THEJA | Manual e instructivo</title>
+  <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/css/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-theja sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="THEJA" class="logo-theja"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Abrir menú">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menuNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li><li class="nav-item"><a class="nav-link" href="ventas.html"><i class="bi bi-cart-plus me-1"></i>Ventas</a></li><li class="nav-item"><a class="nav-link" href="inventario.html"><i class="bi bi-boxes me-1"></i>Inventario</a></li><li class="nav-item"><a class="nav-link" href="procesamiento.html"><i class="bi bi-stack me-1"></i>Procesamiento</a></li><li class="nav-item"><a class="nav-link" href="empleados.html"><i class="bi bi-people me-1"></i>Empleados</a></li><li class="nav-item"><a class="nav-link active" href="manual.html"><i class="bi bi-journal-text me-1"></i>Manual</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <h2 class="page-title mb-3"><i class="bi bi-journal-text me-2"></i>Manual Técnico y de Usuario</h2>
+  <p class="text-secondary small">Instructivo completo de uso de la aplicación, con capturas y especificaciones técnicas. Proyecto ACA &middot; Corte 3 &middot; Opción B &middot; Logística Andina S.A.S.</p>
+
+  <div class="card mb-4">
+    <div class="card-header"><i class="bi bi-list-nested me-2"></i>Índice del manual</div>
+    <div class="card-body">
+      <ol class="mb-0">
+        <li><a href="#introduccion">Introducción</a></li>
+        <li><a href="#instructivo">Instructivo de uso (paso a paso) con capturas</a></li>
+        <li><a href="#especificaciones">Especificaciones técnicas</a></li>
+        <li><a href="#prompt">Prompt Engineering (uso de IA)</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card mb-4" id="introduccion">
+    <div class="card-header"><i class="bi bi-lightbulb me-2"></i>1. Introducción</div>
+    <div class="card-body">
+      <p>
+        <b>Logística Andina S.A.S.</b> es una empresa colombiana de distribución de insumos comerciales que
+        enfrentaba una <b>crisis de información</b>: ventas, inventario y desempeño del personal se manejaban en
+        archivos sueltos y registros manuales, con retrasos de hasta dos semanas para consolidar informes, errores
+        humanos recurrentes y pérdida de oportunidades por no poder analizar los datos en tiempo real.
+      </p>
+      <p class="mb-0">
+        <b>THEJA</b> es la solución centralizada: una herramienta web que integra el <b>registro de ventas</b>, el
+        <b>control de inventario</b>, el <b>desempeño de los vendedores</b> y un <b>tablero de mando</b> con
+        indicadores clave, almacenando la información en una base de datos relacional <b>SQLite</b> con integridad
+        garantizada (claves foráneas, restricciones y transacciones). La interfaz nunca modifica la base de datos
+        directamente: solo consume servicios API, garantizando una arquitectura de 3 capas.
+      </p>
+    </div>
+  </div>
+
+  <div class="card mb-4" id="instructivo">
+    <div class="card-header"><i class="bi bi-person-walking me-2"></i>2. Instructivo de uso</div>
+    <div class="card-body">
+
+      <h6 class="fw-bold">2.1 Iniciar la aplicación</h6>
+      <ol>
+        <li>En la carpeta del proyecto ejecutar <code>npm install</code> (solo la primera vez).</li>
+        <li>Ejecutar <code>npm start</code>.</li>
+        <li>Abrir el navegador en <code>http://localhost:3000</code>.</li>
+      </ol>
+      <p class="small text-secondary mb-0">
+        La base de datos se crea <b>vac&iacute;a</b> en la primera ejecuci&oacute;n: productos, empleados y ventas se
+        ingresan manualmente desde la aplicaci&oacute;n. Si desea recuperar datos de ejemplo, revise
+        <code>database/seed.sql</code> (opcional).
+      </p>
+
+      <hr class="my-4">
+
+      <h6 class="fw-bold">2.2 Tablero de mando (Dashboard)</h6>
+      <p>La pantalla principal muestra los indicadores de gestión y los gráficos para la toma de decisiones:</p>
+      <img src="img/capturas/index.png" alt="Captura del Dashboard" class="img-fluid rounded border mb-3">
+      <ul>
+        <li>Tarjetas de <b>ventas totales</b>, <b>producto más vendido</b>, <b>rotación de inventario</b> y
+            <b>transacciones / alertas de stock bajo</b>.</li>
+        <li>Gráficos de <b>ventas por mes</b>, <b>ventas por producto</b> y <b>desempeño de vendedores</b>.</li>
+        <li>Tabla de <b>ventas recientes</b> para el monitoreo diario.</li>
+      </ul>
+
+      <hr class="my-4">
+
+      <h6 class="fw-bold">2.3 Registrar una venta</h6>
+      <img src="img/capturas/ventas.png" alt="Captura del módulo de ventas" class="img-fluid rounded border mb-3">
+      <ol>
+        <li>Ingrese al menú <b>Ventas</b>.</li>
+        <li>Seleccione el <b>producto</b>; se muestran su precio y el stock disponible.</li>
+        <li>Indique la <b>cantidad</b> (número entero). El <b>total estimado</b> se calcula automáticamente.</li>
+        <li>Opcionalmente escriba el <b>cliente</b> y seleccione el <b>vendedor</b>.</li>
+        <li>Pulse <b>Registrar venta</b>.</li>
+      </ol>
+      <p class="small text-secondary mb-0">
+        El servidor valida que el stock sea suficiente, descuenta el inventario y registra el movimiento de salida
+        de forma automática y atómica (transacción). No se puede modificar la base de datos directamente.
+      </p>
+
+      <hr class="my-4">
+
+      <h6 class="fw-bold">2.4 Controlar el inventario</h6>
+      <img src="img/capturas/inventario.png" alt="Captura del módulo de inventario" class="img-fluid rounded border mb-3">
+      <ol>
+        <li><b>Entrada de mercancía:</b> seleccione el producto, la cantidad y el motivo (reabastecimiento). El stock aumenta.</li>
+        <li><b>Salida de mercancía:</b> seleccione el producto, la cantidad y el motivo (ajuste, merma). El stock disminuye y se valida que no supere el disponible.</li>
+        <li><b>Nuevo producto:</b> cree productos con nombre, categoría, unidad, precio de venta, costo, stock inicial y stock de seguridad.</li>
+        <li>La tabla muestra el estado del stock con alertas de <b>Stock bajo</b> (stock &le; stock de seguridad) u <b>Óptimo</b>, junto con el historial de movimientos.</li>
+      </ol>
+
+      <hr class="my-4">
+
+      <h6 class="fw-bold">2.5 Módulo de procesamiento (limpieza y transformación)</h6>
+      <img src="img/capturas/procesamiento.png" alt="Captura del módulo de procesamiento" class="img-fluid rounded border mb-3">
+      <ol>
+        <li>Ingrese al menú <b>Procesamiento</b>.</li>
+        <li>Pegue datos en formato CSV, una fila por línea:
+            <code>fecha, producto, cantidad, precio, cliente, vendedor</code>
+            (puede pulsar <b>Ejemplo</b> para cargar datos de prueba).</li>
+        <li>Pulse <b>Cargar datos</b>: las filas quedan como <i>datos pendientes</i>.</li>
+        <li>Pulse <b>Procesar datos pendientes</b>: el sistema valida y normaliza cada fila y, si es válida, la
+            registra como venta descontando el stock. Las filas inválidas se marcan <b>Rechazada</b> con su motivo.</li>
+      </ol>
+      <table class="table table-sm table-theja mb-0">
+        <thead><tr><th>Entrada cruda</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td><code>09/09/2026, lapicero tinta negra, 50, 1,800, Colegio, Laura Gómez</code></td><td>Venta creada (precio y fecha normalizados)</td></tr>
+          <tr><td><code>09/09/2026, producto fantasma, 5, 999, , Pepe</code></td><td>Rechazada: producto desconocido</td></tr>
+          <tr><td><code>09/09/2026, Cuaderno cuadriculado, 0, 6900, ,</code></td><td>Rechazada: cantidad inválida</td></tr>
+        </tbody>
+      </table>
+
+      <hr class="my-4">
+
+      <h6 class="fw-bold">2.6 Empleados y desempeño</h6>
+      <img src="img/capturas/empleados.png" alt="Captura del módulo de empleados" class="img-fluid rounded border mb-3">
+      <ol>
+        <li>Ingrese al menú <b>Empleados</b>.</li>
+        <li>Registre personal nuevo (nombre, cargo, correo, teléfono).</li>
+        <li>La tabla presenta el <b>desempeño comercial</b> (número de ventas, total vendido y participación) para
+            la evaluación del personal.</li>
+      </ol>
+
+      <hr class="my-4">
+
+      <h6 class="fw-bold">2.7 Este manual dentro de la aplicación</h6>
+      <img src="img/capturas/manual.png" alt="Captura de esta misma sección" class="img-fluid rounded border mb-0">
+    </div>
+  </div>
+
+  <div class="card mb-4" id="especificaciones">
+    <div class="card-header"><i class="bi bi-diagram-3 me-2"></i>3. Especificaciones técnicas</div>
+    <div class="card-body">
+      <h6 class="fw-bold">3.1 Arquitectura</h6>
+      <pre class="bg-light p-3 rounded small mb-3">Navegador (HTML5 + Bootstrap 5 + Chart.js)
+        │  HTTP / JSON
+        ▼
+Express (API REST)
+  ├─ src/api.js       → endpoints de productos, ventas, movimientos, empleados y datos crudos
+  ├─ src/pipeline.js  → limpieza y transformación de datos masivos
+  └─ src/db.js        → conexión SQLite, esquema y datos semilla
+        ▼
+SQLite (database/theja.db)</pre>
+      <ul>
+        <li><b>Backend:</b> Node.js &ge; 22.5, Express 4.</li>
+        <li><b>Base de datos:</b> SQLite mediante el módulo nativo <code>node:sqlite</code> (sin dependencias de compilación).</li>
+        <li><b>Frontend:</b> HTML5 + CSS + JavaScript, Bootstrap 5 y Chart.js (archivos locales en <code>public/vendor/</code>, sin depender de internet).</li>
+      </ul>
+
+      <h6 class="fw-bold">3.2 Modelo de datos</h6>
+      <table class="table table-sm table-theja mb-3">
+        <thead><tr><th>Tabla</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td><code>productos</code></td><td>Catálogo con precio de venta, costo, stock actual y stock de seguridad</td></tr>
+          <tr><td><code>ventas</code></td><td>Registro de ventas; el total se calcula en el servidor</td></tr>
+          <tr><td><code>movimientos_inventario</code></td><td>Entradas y salidas de mercancía, ligadas a ventas o manuales</td></tr>
+          <tr><td><code>empleados</code></td><td>Personal de la empresa</td></tr>
+          <tr><td><code>datos_crudos</code></td><td>Datos en bruto del procesamiento (estados: pendiente / procesado / error)</td></tr>
+        </tbody>
+      </table>
+      <ul class="small">
+        <li><code>PRAGMA foreign_keys = ON</code> (claves foráneas activas).</li>
+        <li>Restricciones <code>CHECK (cantidad &gt; 0)</code> y <code>CHECK (tipo IN ('entrada','salida'))</code>.</li>
+        <li>Transacciones SQL para ventas y movimientos: inserción de la venta y descuento de stock como operación atómica.</li>
+        <li>Validación en el servidor: totales calculados con el precio del catálogo, validación de stock, existencia de producto/vendedor y cantidades enteras.</li>
+        <li>Entradas inválidas (JSON o validación) responden HTTP 400 con mensajes claros, nunca errores internos 500.</li>
+      </ul>
+
+      <h6 class="fw-bold">3.3 Fórmulas y algoritmos</h6>
+      <ul>
+        <li><b>Total de la venta:</b> <code>total = cantidad × precio_unitario</code> (precio desde el catálogo).</li>
+        <li><b>Rotación de inventario:</b> <code>Σ(cantidad vendida × costo) / Σ(stock actual × costo)</code>.</li>
+        <li><b>Producto más vendido:</b> <code>SUM(cantidad)</code> por producto, orden descendente, límite 1.</li>
+        <li><b>Fechas:</b> <code>dd/mm/aaaa</code> o <code>dd-mm-aaaa</code> → <code>aaaa-mm-dd HH:MM:SS</code>.</li>
+        <li><b>Números:</b> soporta formatos colombianos: separadores de miles con punto (1.800) o coma (1,800),
+          decimales con coma (1,80) y símbolo de moneda ($2.500); se normaliza antes de guardar.</li>
+        <li><b>Alertas:</b> <code>stock_actual &le; stock_seguridad</code> ⇒ "Stock bajo".</li>
+      </ul>
+
+      <h6 class="fw-bold">3.4 API REST</h6>
+      <div class="table-responsive">
+        <table class="table table-sm table-theja mb-0">
+          <thead><tr><th>Método</th><th>Endpoint</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td>GET</td><td><code>/api/resumen</code></td><td>Indicadores para el tablero de mando</td></tr>
+            <tr><td>GET</td><td><code>/api/productos</code></td><td>Catálogo de productos</td></tr>
+            <tr><td>POST</td><td><code>/api/productos</code></td><td>Crear producto</td></tr>
+            <tr><td>GET</td><td><code>/api/ventas</code></td><td>Listar ventas</td></tr>
+            <tr><td>POST</td><td><code>/api/ventas</code></td><td>Registrar venta (descuenta stock en transacción)</td></tr>
+            <tr><td>GET</td><td><code>/api/inventario</code></td><td>Estado del inventario con entradas/salidas</td></tr>
+            <tr><td>GET</td><td><code>/api/movimientos</code></td><td>Historial de movimientos</td></tr>
+            <tr><td>POST</td><td><code>/api/movimientos</code></td><td>Entrada o salida de mercancía</td></tr>
+            <tr><td>GET</td><td><code>/api/empleados</code></td><td>Empleados y desempeño</td></tr>
+            <tr><td>POST</td><td><code>/api/empleados</code></td><td>Registrar empleado</td></tr>
+            <tr><td>GET</td><td><code>/api/crudos</code></td><td>Datos pendientes y resultados del proceso</td></tr>
+            <tr><td>POST</td><td><code>/api/crudos/cargar</code></td><td>Cargar filas CSV como datos pendientes</td></tr>
+            <tr><td>POST</td><td><code>/api/procesar</code></td><td>Ejecutar limpieza y transformación</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4" id="prompt">
+    <div class="card-header"><i class="bi bi-robot me-2"></i>4. Prompt Engineering (uso de IA)</div>
+    <div class="card-body">
+      <p>
+        Durante el desarrollo se usó IA generativa como apoyo, siguiendo el método <b>CTF</b>
+        (Contexto, Tarea, Formato). Ejemplos de prompts empleados:
+      </p>
+      <ul class="mb-0">
+        <li><i>"Soy estudiante de Análisis y Desarrollo de Software. Crea una API REST en Node.js con Express y SQLite (<code>node:sqlite</code>) para Logística Andina S.A.S., una distribuidora de insumos. Debe permitir registrar ventas, controlar inventario con entradas/salidas y usar transacciones para que el descuento de stock sea atómico."</i></li>
+        <li><i>"Diseña un tablero de mando con Bootstrap y Chart.js que muestre ventas totales, producto más vendido, rotación de inventario, ventas por mes y desempeño de vendedores."</i></li>
+        <li><i>"Al enviar cantidades decimales la venta se registra mal. ¿Cómo valido que la cantidad sea un número entero positivo y devuelva un error 400 en lugar de aceptar el dato corrompido?"</i></li>
+        <li><i>"Redacta el manual técnico y de usuario de una aplicación web de gestión de ventas e inventario con introducción, instrucciones paso a paso con capturas y especificaciones técnicas."</i></li>
+      </ul>
+      <p class="small text-secondary mt-3 mb-0">
+        La IA fue una herramienta de apoyo: cada resultado se revisó, adaptó y probó. Todo el código, las
+        validaciones y las pruebas fueron verificadas manualmente.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer-theja py-3 mt-4">
+  <div class="container text-center">
+    THEJA &copy; 2026 &middot; Herramienta web para Log&iacute;stica Andina S.A.S.
+    &middot; <a href="manual.html" class="text-white-50">Manual de usuario</a>
+  </div>
+</footer>
+
+<script src="vendor/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

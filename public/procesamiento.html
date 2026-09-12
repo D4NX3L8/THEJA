@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>THEJA | Procesamiento de Datos</title>
+  <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/css/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-theja sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="THEJA" class="logo-theja"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Abrir menú">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menuNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li><li class="nav-item"><a class="nav-link" href="ventas.html"><i class="bi bi-cart-plus me-1"></i>Ventas</a></li><li class="nav-item"><a class="nav-link" href="inventario.html"><i class="bi bi-boxes me-1"></i>Inventario</a></li><li class="nav-item"><a class="nav-link active" href="procesamiento.html"><i class="bi bi-stack me-1"></i>Procesamiento</a></li><li class="nav-item"><a class="nav-link" href="empleados.html"><i class="bi bi-people me-1"></i>Empleados</a></li><li class="nav-item"><a class="nav-link" href="manual.html"><i class="bi bi-journal-text me-1"></i>Manual</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <main class="container py-4">
+    <h2 class="page-title mb-4"><i class="bi bi-stack me-2"></i>Módulo de Procesamiento</h2>
+
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <i class="bi bi-upload me-2"></i>Carga masiva de datos crudos (CSV)
+          </div>
+          <div class="card-body">
+            <p class="small text-secondary">
+              Cada línea debe tener el formato:
+              <code>fecha, producto, cantidad, precio, cliente, vendedor</code>
+            </p>
+            <textarea class="form-control mb-2 font-monospace" id="txtCsv" rows="8" spellcheck="false"></textarea>
+            <div class="d-flex gap-2">
+              <button class="btn btn-theja" id="btnCargar"><i class="bi bi-upload me-1"></i>Cargar datos</button>
+              <button class="btn btn-outline-secondary" id="btnEjemplo"><i class="bi bi-magic me-1"></i>Ejemplo</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header">
+            <i class="bi bi-filter-square me-2"></i>Pipeline de limpieza y transformación
+          </div>
+          <div class="card-body">
+            <p class="small text-secondary mb-3">
+              El proceso valida cada fila (producto, cantidad, stock, precio), normaliza fechas,
+              calcula el total y registra la venta en la base de datos principal.
+            </p>
+            <button class="btn btn-success w-100" id="btnProcesar">
+              <i class="bi bi-gear me-1"></i>Procesar datos pendientes
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card mb-3">
+          <div class="card-header"><i class="bi bi-inbox me-2"></i>Datos pendientes (<span id="contPendientes">0</span>)</div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-theja table-sm mb-0" id="tablaPendientes">
+                <thead>
+                  <tr><th>Fecha</th><th>Producto</th><th class="text-end">Cant.</th><th class="text-end">Precio</th><th>Vendedor</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-header"><i class="bi bi-check2-square me-2"></i>Resultados del proceso</div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-theja table-sm mb-0" id="tablaResultados">
+                <thead><tr><th>Estado</th><th>Detalle</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<footer class="footer-theja py-3 mt-4">
+  <div class="container text-center">
+    THEJA &copy; 2026 &middot; Herramienta web para Log&Aacute;stica Andina S.A.S.
+    &middot; <a href="manual.html" class="text-white-50">Manual de usuario</a>
+  </div>
+</footer>
+
+  <script src="vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/procesamiento.js"></script>
+</body>
+</html>

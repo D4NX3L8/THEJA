@@ -1,0 +1,116 @@
+:root {
+  --theja-primary: #0f4c5c;
+  --theja-primary-dark: #00c8ff;
+  --theja-secondary: #e36414;
+  --theja-accent: #5f8ae4;
+  --theja-light: #f4f7fa;
+  --theja-success: #2a9d8f;
+  --theja-danger: #e63946;
+}
+
+body {
+  background-color: var(--theja-light);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.navbar-theja {
+  background: linear-gradient(90deg, var(--theja-primary-dark), var(--theja-primary));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-theja .navbar-brand {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navbar-theja .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-theja .nav-link:hover,
+.navbar-theja .nav-link.active {
+  color: #fff;
+}
+
+.navbar-theja .nav-link.active {
+  border-bottom: 2px solid var(--theja-secondary);
+}
+
+.logo-theja {
+  height: 70px;
+  margin-right: 9px;
+}
+
+.page-title {
+  color: var(--theja-primary-dark);
+  font-weight: 600;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(15, 76, 92, 0.08);
+}
+
+.card-header {
+  background: #fff;
+  border-bottom: 2px solid var(--theja-light);
+  font-weight: 600;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+}
+
+.kpi-card {
+  border-left: 5px solid var(--theja-primary);
+}
+
+.kpi-card .kpi-value {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--theja-primary-dark);
+}
+
+.kpi-card .kpi-label {
+  color: #6c757d;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.kpi-card.c-secondary { border-left-color: var(--theja-secondary); }
+.kpi-card.c-accent { border-left-color: var(--theja-accent); }
+.kpi-card.c-success { border-left-color: var(--theja-success); }
+.kpi-card.c-danger { border-left-color: var(--theja-danger); }
+
+.badge-bajo { background: var(--theja-danger); }
+.badge-ok { background: var(--theja-success); }
+
+.table-theja th {
+  background: var(--theja-light);
+  color: var(--theja-primary-dark);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.btn-theja {
+  background: var(--theja-primary);
+  color: #fff;
+}
+
+.btn-theja:hover { background: var(--theja-primary-dark); color: #fff; }
+
+.footer-theja {
+  background: var(--theja-primary-dark);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.hero-theja {
+  background: linear-gradient(120deg, var(--theja-primary-dark), var(--theja-primary));
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+}
+
+.toast-container { z-index: 1080; }

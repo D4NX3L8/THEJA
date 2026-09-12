@@ -1,0 +1,15 @@
+{
+  "name": "theja",
+  "version": "1.0.0",
+  "description": "THEJA - Sistema web de gestión comercial para Logística Andina S.A.S. (Ventas, Inventario y Dashboard)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "init": "node src/init.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
