@@ -45,7 +45,7 @@ Si tienes Docker instalado, no necesitas instalar Node.js localmente:
    ```
 
 2. **Abrir en el navegador:**
-   - **http://localhost:3000**
+   - **http://localhost:3003** (o `http://<IP-DEL-SERVIDOR>:3003`)
 
 3. **Ver registros (logs):**
    ```bash

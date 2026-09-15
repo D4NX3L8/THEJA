@@ -5,7 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: theja_app
     ports:
-      - "3000:3000"
+      # Puerto externo (host) 3003 hacia el puerto interno 3000 del contenedor
+      - "3003:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
