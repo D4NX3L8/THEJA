@@ -35,6 +35,34 @@ se aplican solos. Para reconstruir la base desde cero:
 npm run init -- --reset
 ```
 
+### Ejecución con Docker (Recomendado)
+
+Si tienes Docker instalado, no necesitas instalar Node.js localmente:
+
+1. **Construir y levantar el contenedor:**
+   ```bash
+   docker compose up -d --build
+   ```
+
+2. **Abrir en el navegador:**
+   - **http://localhost:3000**
+
+3. **Ver registros (logs):**
+   ```bash
+   docker compose logs -f
+   ```
+
+4. **Reiniciar base de datos dentro del contenedor (opcional):**
+   ```bash
+   docker compose exec theja npm run init -- --reset
+   ```
+
+5. **Detener el contenedor:**
+   ```bash
+   docker compose down
+   ```
+
+
 ## Estructura del proyecto
 
 ```

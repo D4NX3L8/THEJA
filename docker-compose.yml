@@ -1,0 +1,21 @@
+services:
+  theja:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: theja_app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      # Opción 1 (Recomendada): Volumen nombrado gestionado por Docker (aísla y protege SQLite)
+      - theja_db_data:/app/database
+      # Opción 2: Mapeo directo a la carpeta local (descomenta si deseas ver theja.db en tu máquina)
+      # - ./database:/app/database
+    restart: unless-stopped
+
+volumes:
+  theja_db_data:
+    driver: local
